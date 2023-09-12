@@ -1,0 +1,261 @@
+/* IMPORT DES POLICE sur GoogleFont @import*/
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@200;400&family=Noto+Sans+Old+Permic&family=Oswald:wght@500&display=swap');
+/* ou avec download */
+
+@font-face {
+    font-family: "DMSerif";
+    src: url(./ressources/Police/DM_Serif_Display/DMSerifDisplay-Regular.ttf);
+}
+
+/* "*" donne du style à tout les element de la page  */
+/* *{
+    margin: 0;
+    padding: 0;
+    border : 1px solide black;
+} */
+
+
+body{
+    /* ARRIERE PLAN  */
+    background: url(/CourCSS1/ressources/image/paysage\ tropical.jpg) center/cover;
+    /* adresse de l'image à afficher */
+
+    min-height: 100vh;
+    /* 100VH (viewport height = 100% de la taille de l'ecran dans la limite du bloc ici : "body" */
+    /* minimum 100% de la taille de l'ecran et plus si le contenue le demande */
+}
+
+
+/* Bloc enfant prioritaire parce que plus specifique que le bloc parent */
+h1 {
+    /* transformer le texte ex: toutes les lettres en majuscule */
+    text-transform: uppercase;
+
+    /* espace entre les lettre */
+    letter-spacing: 3px;
+
+    /* Centrer dans la verticalité */
+    text-align: center;
+
+    /* Taille des lettres */
+    /* les taille de police doivent etre en "rem". 1 rem = 60px Ca s'adapte mieux à l'ecran */
+    font-size: 2.5rem;
+
+    /* Faire une ombre */
+    /* Allez dans l'inspecteur de la page web pour le reglage */
+    text-shadow: 5px 6px 4px #00000096;
+
+    /* couleur du texte */
+    color: #18186d;
+
+    /* Souligner, surligner, etc... */
+    text-decoration: underline;
+
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Placer les balise CSS dans l'ordre d'imbrication des blocs ex : ici : "main" passe au dessus de "body" */
+main {
+    /* hauteur avec un minimum et non une hauteur fixe pour s'adapter à la page*/
+    min-height: 500px;
+    /* Largeur ecrit en % pour s'adapter à la taille de l'ecran ici 90% */
+    width: 90%;
+   /* Arriere plan du block "main"  */
+    background: rgba(184, 188, 204, 0.815);
+    /* marge exterieur du block = Centrer une boite ici : haut/bas : 0 gauche/droite : auto*/
+    margin: 0 auto;
+    /* ou margin-top : pour s'écarter du titre */
+    /* margin-top: 50px; */
+    /* contour du bloc */
+    border: 2px solid black;
+    /* casser les angles de l'arriere plan du block */
+    border-radius: 20px;
+    /* ombre du block */
+    box-shadow: -14px -20px 11px 5px #0e184fcc;
+    /* marge interieur : regler dans l'inspecteur chrome*/
+    /* utilier l'outil ruler measurement */
+    padding: auto;
+}
+
+/* De base les titre ont deja du style. Utiliser * pour remettre toute la page a zero ou règler un par un */
+/* h2{
+    margin: 0;
+} */
+
+.flexbox, .grid, .absolute{
+    /* On donne les meme propriété general de mise en page au bloc flexbox et grid  */
+    border: 2px solid;
+    /* espace entre le contour du bloc et le contenu : padding */
+    padding: 10px;
+    /* marge entre le bloc parent et le bloc enfant : margin */
+    margin: 20px;
+    min-height: 150px;
+}
+
+/* FLEXBOX  */
+/* Flexbox sert à répartir equitablement des element sur la page  */
+
+.flexbox ul{
+    border: 2px red solid;
+    padding: 0;
+    display: flex;
+    /* Regler le display flex dans l'inspecteur de google */
+}
+
+.flexbox li{
+    /* Tout les element "Li" contenu dans la "div class = Flexbox" */
+    list-style: none;
+    /* liste-style enleve le point par default de la liste  */
+    height: 160px;
+    width: 160px;
+    margin: 10px;
+    background: rgba(6, 7, 71, 0.842);
+    /* Centrer un unique element verticalement et horizontalement */
+    display: flex;
+            /* center à la verical : de droite a gauche */
+    justify-content: center;
+            /* centrer horizontalement : de haut en bas  */
+    align-items: center;
+}
+
+        /* GRID  */
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    /* 30% pour le premier enfant du grid et 70% pour le second enfant, etc si il y avais d'autre enfants */
+}
+
+.grid img{
+    width: 80%;
+    /* image contenue dans la div class=grid à 30% de la largeur de la page  */
+    display : block;
+    /* display block pour que l'element se comporte comme un block / ici pour prendre toute la place d'un block  */
+    margin: 0 auto;
+    
+}
+
+form{
+    display: grid;
+    /* ouverture d'une grille avec les enfants du formulaire */
+    grid-template-columns: 1fr 1fr;
+    /* fr = division du bloc  ici il y 2 colonne repartis equitablement */
+    grid-template-rows: 1fr 1fr 1fr;
+    /* ici 3 lignes repartient equitablement */
+    grid-template-areas: 
+    "i1 i2"   
+    "ta ta"  
+    "vi bt"   ;
+    /* repartition des blocs du grid */ 
+    /* ligne 1 colonne 1 : "input 1" = "i1" / ligne 1 colonne 2 : "input 2" = "i2"  */
+    /* ligne 2 colonne 1 et 2 : "texte area" = "ta" */
+    /* line 3 colonne 1 : "vide" = "vi" / ligne 3 colonne 2 : "bouton" = "bt" (input de type submit) */
+    /* et enfin on ferme le grid-template-areas avec le point virgule ";"" */
+}
+
+input, textarea{
+    margin: 5px;
+    /* marge entre les bloques */
+    border: 1px solid green;
+    padding: 10px;
+    /* espace entre le texte et le bloc a l'interieur */
+    font-size: 1.1rem;
+    font-family: "DMSerif";
+    /* changement de la police a l'interieur des input et textarea */
+    border-radius: 5px;
+}
+
+textarea{
+    grid-area: ta;
+    /* on dit à la zone de texte  le nom qu'elle porte sur la grille template  */
+    height: 40px;
+}
+
+#btn-submit{
+    grid-area: bt;
+    /* on dit à l' "id = btn-submit" le nom qu'il porte dans la grille template " */
+    cursor: pointer;
+    /* pointeur au passage */
+    background: cyan;
+    /* couleur de fond du bloc  */
+    transition: 50ms;
+    /* il st preferable de metre les transition dans le "#btn-submit" plutot que dans le "#btn-submit:hover" */
+    /* temps de transition d'un etat à un autre */
+}
+
+/* PSEUDOCLASS */
+#btn-submit:hover{
+    background: yellow;
+    color: #18186d;
+    position: relative;
+
+}
+
+/* ABSOLUTE  */
+/* Sans element en relative, de base l'element en absolut l'est par rapport au body  */
+
+.absolute{
+    position: relative;
+    /* Il faut mettre une position relative au parent pour contraindre l'element absolute dans ses frontiere */
+}
+#cercle1{
+    height: 80px;
+    width: 80px;
+    border-radius: 150px;
+    background: #18186d;
+
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    /* position par rapport au parent relative */
+    }
+
+#cercle2{
+        height: 40px;
+        width: 40px;
+        border-radius: 150px;
+        background: #086e19;
+        position: absolute;
+
+        /* centrer un element en absolute */
+
+        left: 50%;
+        /* decalage à 50% de la gauche par rapport au bord droit donc :  */
+        transform: translate(-50%);
+        /* décalage du point de reference de -50% de sa propre taille au lieu d'etre sur le bord droit, le point de reference est au centre du cercle*/
+        top: 100px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width :900px ) {
+    /* A partir de 900px tu vas faire ces action : */
+    .grid-container{
+        display : block;
+        /* le grid container se conduira comme un bloc / ici : le formulaire sous l'image  */
+
+    }
+    .grid-container img{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width : 700px) {
+
+    .flexbox ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    form{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr ;
+        grid-template-areas:
+        "i1"
+        "i2"
+        "ta"
+        "bt" ;
+    }
+    input, textarea{
+        font-size: 0.8rem;
+    }
+}
+
